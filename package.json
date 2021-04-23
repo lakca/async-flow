@@ -1,0 +1,19 @@
+{
+  "name": "@lakca/async-flow",
+  "version": "1.0.0",
+  "description": "Call functions in different synchronous flow(tick/phase).",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "cov": "istanbul check-coverage --statement 95 --function 100 && istanbul cover *test*.js"
+  },
+  "keywords": [
+    "asynchronous",
+    "sequentially"
+  ],
+  "author": "lakca",
+  "license": "MIT",
+  "devDependencies": {
+    "istanbul": "^0.4.5"
+  }
+}
