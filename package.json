@@ -1,11 +1,18 @@
 {
   "name": "@lakca/async-flow",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Call functions in different synchronous flow(tick/phase).",
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
     "cov": "istanbul check-coverage --statement 95 --function 100 && istanbul cover *test*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lakca/async-flow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lakca/async-flow/issues"
   },
   "keywords": [
     "asynchronous",

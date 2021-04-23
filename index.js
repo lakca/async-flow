@@ -1,4 +1,4 @@
-const defaultAsyncFor = setTimeout.bind(void 0)
+var defaultAsyncFor = setTimeout.bind(void 0)
 
 function Flows(asyncFor) {
   this._asyncFor = asyncFor || defaultAsyncFor
@@ -13,12 +13,12 @@ Flows.prototype.asyncFor = function(asyncFor) {
   return this
 }
 
-Flows.prototype.push = function(...args) {
-  for (const arg of args) {
-    if (arg) {
-      this._super.push.call(this, arg)
-    }
-  }
+Flows.prototype.push = function() {
+  var args = this._super.slice.call(arguments)
+  var self = this
+  args.forEach(function(arg) {
+    if (arg) self._super.push.call(self, arg)
+  })
   this._start()
   return this
 }
@@ -26,8 +26,8 @@ Flows.prototype.push = function(...args) {
 Flows.prototype._start = function() {
   if (this._started) return
   this._started = true
-  const self = this
-  const flow = this.shift()
+  var self = this
+  var flow = this.shift()
   if (flow) {
     flow()
     this._asyncFor(function() {
@@ -56,7 +56,7 @@ Flows.prototype._start = function() {
  * @more find more examples in test.js
  */
 module.exports = function asyncFlow(flow, asyncFor) {
-  const flows = this instanceof Flows ? this : new Flows()
+  var flows = this instanceof Flows ? this : new Flows()
   flows.asyncFor(asyncFor).push(flow)
   return asyncFlow.bind(flows)
 }
